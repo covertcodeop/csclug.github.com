@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Tutorials - CSCLUG.org</title>
+    <title> Mini-HowTo: Setup a Development Environment for J2ME Applications in Ubuntu 10.04 </title>
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
@@ -34,9 +34,7 @@
                     <li class="">
                         <a href="calendar.html">Calendar</a>
                     </li>
-                    <li class="">
-                        <a href="localGroups.html">Local Groups</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -45,7 +43,7 @@
 
 <div class="container">
     <header class="jumbotron subhead" id="overview">
-        <h1>Tutorials</h1>
+       <h1> Mini-HowTo: Setup a Development Environment for J2ME Applications in Ubuntu 10.04 </h1>
         <p class="lead">From Hacking to Tunneling to Clouds and Green Pastures, learn from our fun group.</p>
 
     </header>
@@ -54,14 +52,57 @@
 
         <div class="row">
             <div class="span8">
-                <h2>CSCLUG Communications</h2>
-                <ul>
-                    <li><a href="lug_muc.html">Connecting to the conference chat server</a></li>
-                </ul>
-                <h2>Developer stuff</h2>
-			<p> <a href="minidev.html"> Mini devloper thingy </a>
-                <h2>Networking stuff</h2>
-								<p>Reference to move tutorials from: <a href="https://sites.google.com/a/csclug.org/csclug/">https://sites.google.com/a/csclug.org/csclug/</a></p>
+                
+ <p>J2ME (Java 2 Micro Edition) is currently used as an API by many electronic devices. Most notably, nearly all "dumb"-phones are using it, and it has a relatively well-defined standard making cross-platform application development fairly easy. The smartphone market is fully aware of the massive availability of J2ME applications, and smartphone emulators for J2ME applications either exist or are under development.
+The ability to reach such a broad market makes J2ME development something I am very interested in, so I went about learning how to do it! First, I needed to set up a development environment:</br></br>
+
+System: 1.6 Ghz Pentium Core Duo, 512 Mb RAM, Ubuntu 10.04</br></br></p>
+
+<h2>1. Install Ubuntu packages necessary for Java development:</h2></br>
+
+<p>$sudo apt-get install gcj sun-java6-jdk sun-java6-jre</br></br>
+
+gcj: Gnu Java Compiler - This will reach out for several packages needed to compile Java Apps</br></br>
+
+sun-java6-*: There is an Open Java SDK available, but it does not build projects created with the Sun Wireless Toolkit reliably. Stick with the Sun JDK and just release your code as you see fit!</p></br></br>
+
+<h2>2. Install the Sun Wireless Toolit:</h2></br>
+<p>UNFORTUNATELY - Sun (spoken Oracle) has not released Java ME SDK 3.0 for Linux yet. The Sun Wireless Toolkit was enveloped by the SDK in version 3.0. For now, we must install the Wireless Toolkit (WTK) manually.</br></br>
+
+$ wget https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site...</br></br>
+
+This will download the binary file necessary for installation. You can view the Oracle page for research / links here.</br></br>
+
+Once the file has been downloaded, you must change its permissions to allow execution:</br></br>
+
+$chmod +x ./sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh</br></br>
+
+Now, you need to do some research so you know what to tell the installer. First, we need to know where our JDK is located. Start looking in:
+
+/usr/lib/jvm</br></br>
+
+There will be several directories and sim-links. In my installation, the sim-link java-6-sun pointed to the right location for the JDK. Next, we install the WTK:</br></br>
+
+$./sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh</br></br>
+
+After the license agreement, you will be prompted to enter a JDK location if the installer could not find it. In my installation, I had to manually define the JDK location:</br></br>
+
+/usr/lib/jvm/java-6-sun/bin</br></br>
+
+It is very important to carry the path all the way to the */bin directory. The next few questions are very straight forward.</p></br></br>
+
+<h2>3. Develop:</h2></br>
+<p>Once the WTK installation is complete, you can run */WTK2.5.2/bin/ktoolbar to create, build, and package your J2ME apps.
+The WTK comes with some examples to help show the capabilities and uses of the WTK build process and emulator.
+When a project is created, it is automagically saved in your "workspace." The WTK pre-defined the workspace path to:</br></br>
+
+~/j2mewtk/2.5.2/apps</br></br>
+
+Each project's root folder contains a */src folder for your source code. </br></br>
+
+Sun (Oracle) has quite a bit of reference material for getting started with wireless development. Here is a place to start!</br></br>
+
+-J </p>
             </div>
             <div class="span4">
                 <h3>Upcoming Events</h3>
